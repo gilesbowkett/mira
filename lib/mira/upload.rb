@@ -27,20 +27,22 @@ module Mira
     #
     # Returns a Hash containing the API response.
 
-    def upload(file, params)
+    def upload(file, params = {})
       json = self.get('viddler.videos.prepareUpload')
       endpoint = json["upload"]["endpoint"]
+      token = json["upload"]["token"]
       uploaded = RestClient.post(endpoint,
-                                 params.merge(:file => file,
-                                              :sessionid => auth,
-                                              :api_key => @api_key))
+                                 upload_params(file,
+                                               params.merge!(:token => token)))
       JSON.parse uploaded
     end
 
-    def get(api_method, params)
-      auth
-      upload_base = 'http://api.viddler.com/api/v2/'
-      JSON.parse RestClient.get(upload_base, :params => params)
+    def get(api_method, params = {})
+      url = 'http://api.viddler.com/api/v2/' + api_method + '.json'
+      JSON.parse RestClient.get(url,
+                                :params => params.merge!(:sessionid => auth,
+                                                         :method => api_method,
+                                                         :api_key => @api_key))
     end
 
     def auth
