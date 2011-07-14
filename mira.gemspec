@@ -18,10 +18,19 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
+  # specs
   s.add_development_dependency 'rake', '0.8.7'
   s.add_development_dependency 'rspec'
+
+  # I don't understand how people can tolerate IRB without my improvements to it. I
+  # get that this is arrogant, but it's also absolutely sincere.
+  s.add_development_dependency 'utility_belt'
+
+  # api methods
   s.add_runtime_dependency 'json'
   s.add_runtime_dependency 'rest-client'
+
+  # ordered hash
   s.add_runtime_dependency 'activesupport'
 end
 

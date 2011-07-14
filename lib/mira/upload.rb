@@ -60,6 +60,7 @@ module Mira
     end
 
     def upload_params(file, params = {})
+      raise "file argument must be a File" unless file.is_a? File
       ordered_arguments = ActiveSupport::OrderedHash.new
 
       params.each {|k,v| ordered_arguments[k] = v}
