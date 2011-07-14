@@ -10,4 +10,4 @@ Mira supports only a tiny subset of the Viddler API's functionality - namely the
 code copying
 ------------
 
-embed code copied from the original `viddler` gem (which was not actually written by Viddler), and upload functionality adapted from Viddler's official `viddler-ruby` gem.
+embed code copied from the original `viddler` gem (which was not actually written by Viddler); upload functionality and specs adapted from Viddler's official `viddler-ruby` gem.
