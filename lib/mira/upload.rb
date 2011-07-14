@@ -11,7 +11,10 @@ module Mira
     def upload(file, params)
       json = self.get('viddler.videos.prepareUpload')
       endpoint = json["upload"]["endpoint"]
-      RestClient.post(endpoint, params.merge(:file => file, :sessionid => auth))
+      uploaded = RestClient.post(endpoint, params.merge(:file => file,
+                                                        :sessionid => auth,
+                                                        :api_key => @api_key))
+      JSON.parse uploaded
     end
     def get(api_method, params)
       auth
@@ -22,5 +25,11 @@ module Mira
       # FIXME: use VIDDLER_CREDENTIALS, but make it a hash, not a fucking array (wtf)
       # RestClient.get(url) # url is defined in the comment on the pending spec for this
     end
+    def initialize(credentials)
+      @username = credentials[:username]
+      @password = credentials[:password]
+      @api_key = credentials[:api_key]
+    end
   end
 end
+

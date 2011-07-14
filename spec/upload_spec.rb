@@ -7,7 +7,9 @@ describe Mira::ViddlerClient, "upload" do
   before(:each) do
     @file = mock(File)
     @endpoint = "http://upload.viddler.com/upload.json"
-    @viddler_client = Mira::ViddlerClient.new
+    @viddler_client = Mira::ViddlerClient.new(:username => "user",
+                                              :password => "s3kr3t",
+                                              :api_key => "12345")
 
     RestClient.stub!(:post).and_return('{"response":["hello","howdy"]}')
     @viddler_client.stub!(:get).and_return({"upload" => {"endpoint" => @endpoint}})
@@ -39,7 +41,7 @@ describe Mira::ViddlerClient, "upload" do
   end
   
   it "includes API key" do
-    RestClient.should_receive(:post).with(anything, hash_including(:api_key => 'abc123'))
+    RestClient.should_receive(:post).with(anything, hash_including(:api_key => '12345'))
     @viddler_client.upload @file, :param1 => 'asdf', :param2 => true
   end
   
