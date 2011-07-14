@@ -44,5 +44,7 @@ note that after uploading, Viddler will lag before displaying your video, and wi
 TODO
 ====
 
-add specs about that whole requiring title, tags, and/or description shit.
+  + add specs about that whole requiring title, tags, and/or description shit.
+  + unify `Mira::Viddler` and `Mira::ViddlerClient` (oops)
+
 
