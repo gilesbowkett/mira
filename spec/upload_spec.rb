@@ -55,5 +55,20 @@ describe Mira::ViddlerClient, "upload" do
     JSON.stub!(:parse).and_return('asdfasdf')
     @viddler_client.upload(@file, :param1 => 'asdf').should == 'asdfasdf'
   end
+
+  it "submits the file argument to the API last" do
+    @viddler_client.should_receive(:auth).and_return('some_session') # FIXME: put back in before
+
+    acceptable_params = ActiveSupport::OrderedHash.new
+    acceptable_params[:argle] = :bargle
+    acceptable_params[:api_key] = '12345'
+    acceptable_params[:sessionid] = 'some_session'
+    acceptable_params[:file] = @file
+
+    @viddler_client.upload_params(@file, :argle => :bargle).should == acceptable_params
+  end
+
+  it "requires an actual File"
   
 end
+
