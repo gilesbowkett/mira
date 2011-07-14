@@ -41,3 +41,8 @@ some or all of `:title`, `:tags`, and `:description` are required. API docs are 
 
 note that after uploading, Viddler will lag before displaying your video, and will not display any kind of "uploaded but still processing..." message. so you basically have to wait a minute with your dick in your hand.
 
+TODO
+====
+
+add specs about that whole requiring title, tags, and/or description shit.
+
