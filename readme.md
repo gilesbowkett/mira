@@ -32,10 +32,11 @@ use the `example.rb` script, or, to see every single step, pop into IRB and do t
     viddler.get('viddler.videos.prepareUpload')
 
     # money shot
-    viddler.upload(File.new("sample.mov"),
-                   :title => "sample",
-                   :tags => "your mom",
-                   :description => "whatever")
+    result = viddler.upload(File.new("sample.mov"),
+                            :title => "sample",
+                            :tags => "your mom",
+                            :description => "whatever")
+    puts Mira::Viddler.embed_code(:id => result["video"]["id"])
 
 some or all of `:title`, `:tags`, and `:description` are required. API docs are not forthcoming on the subject and I couldn't care less. just throw them all in there and it'll work.
 
