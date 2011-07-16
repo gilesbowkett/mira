@@ -1,3 +1,9 @@
+viddler_wtf branch
+------------------
+
+Viddler is breaking in a huge way right now, with its soon-to-be deprecated API. This branch is for load testing its new API to determine if the failure is unique to the old API or if it exists throughout their system.
+
+
 Mira
 ====
 
